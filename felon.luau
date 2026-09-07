@@ -62,7 +62,7 @@ local Library do
     Library = {
         Theme =  { },
 
-        MenuKeybind = tostring(Enum.KeyCode.RightControl), 
+        MenuKeybind = tostring(Enum.KeyCode.RightShift), 
 
         Flags = { },
 
@@ -187,13 +187,13 @@ local Library do
 
     local Themes = {
         ["Preset"] = {
-            ["Background"] = FromRGB(13, 15, 18),
+            ["Background"] = FromRGB(5, 5, 5),
             ["Inline"] = FromRGB(22, 25, 30),
             ["Outline"] = FromRGB(26, 30, 36),
             ["Text"] = FromRGB(200, 200, 200),
             ["Dark Text"] = FromRGB(100, 100, 100),
             ["Element"] = FromRGB(28, 32, 38),
-            ["Accent"] = FromRGB(184, 212, 255)
+            ["Accent"] = FromRGB(0, 0, 0)
         }
     }
 
@@ -201,9 +201,9 @@ local Library do
 
     -- Folders
     local Folders = {
-        Directory = "lds13",
-        Configs = "lds13/Configs",
-        Assets = "lds13/Assets",
+        Directory = "Felon",
+        Configs = "Felon/Configs",
+        Assets = "Felon/Assets",
     }
     
     for Index, Value in Folders do 
@@ -657,7 +657,7 @@ local Library do
             return Font.new(getcustomasset(`{Library.Folders.Assets}/{Name}.font`))
         end
 
-        Library.Font = CustomFont:New("InterSemiBold", 400, "Regular", {
+        Library.Font = CustomFont:New("InterSemiBold", 400, "Bold", {
             Id = "InterSemiBold",
             Url = "https://github.com/sametexe001/luas/raw/refs/heads/main/fonts/InterSemibold.ttf"
         })
