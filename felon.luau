@@ -75,9 +75,9 @@ local Library do
         FadeSpeed = 0.2,
 
         Folders = {
-            Directory = "lds13",
-            Configs = "lds13/Configs",
-            Assets = "lds13/Assets",
+            Directory = "felon",
+            Configs = "felon/Configs",
+            Assets = "felon/Assets",
         },
 
         -- Ignore below
@@ -187,7 +187,7 @@ local Library do
 
     local Themes = {
         ["Preset"] = {
-            ["Background"] = FromRGB(5, 5, 5),
+            ["Background"] = FromRGB(13, 15, 18),
             ["Inline"] = FromRGB(22, 25, 30),
             ["Outline"] = FromRGB(26, 30, 36),
             ["Text"] = FromRGB(200, 200, 200),
@@ -201,9 +201,9 @@ local Library do
 
     -- Folders
     local Folders = {
-        Directory = "Felon",
-        Configs = "Felon/Configs",
-        Assets = "Felon/Assets",
+        Directory = "felon",
+        Configs = "felon/Configs",
+        Assets = "felon/Assets",
     }
     
     for Index, Value in Folders do 
@@ -657,7 +657,7 @@ local Library do
             return Font.new(getcustomasset(`{Library.Folders.Assets}/{Name}.font`))
         end
 
-        Library.Font = CustomFont:New("InterSemiBold", 400, "Bold", {
+        Library.Font = CustomFont:New("InterSemiBold", 400, "Regular", {
             Id = "InterSemiBold",
             Url = "https://github.com/sametexe001/luas/raw/refs/heads/main/fonts/InterSemibold.ttf"
         })
