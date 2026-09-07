@@ -62,7 +62,7 @@ local Library do
     Library = {
         Theme =  { },
 
-        MenuKeybind = tostring(Enum.KeyCode.RightShift), 
+        MenuKeybind = tostring(Enum.KeyCode.RightControl), 
 
         Flags = { },
 
@@ -75,9 +75,9 @@ local Library do
         FadeSpeed = 0.2,
 
         Folders = {
-            Directory = "felon",
-            Configs = "felon/Configs",
-            Assets = "felon/Assets",
+            Directory = "lds13",
+            Configs = "lds13/Configs",
+            Assets = "lds13/Assets",
         },
 
         -- Ignore below
@@ -193,7 +193,7 @@ local Library do
             ["Text"] = FromRGB(200, 200, 200),
             ["Dark Text"] = FromRGB(100, 100, 100),
             ["Element"] = FromRGB(28, 32, 38),
-            ["Accent"] = FromRGB(0, 0, 0)
+            ["Accent"] = FromRGB(184, 212, 255)
         }
     }
 
@@ -201,9 +201,9 @@ local Library do
 
     -- Folders
     local Folders = {
-        Directory = "felon",
-        Configs = "felon/Configs",
-        Assets = "felon/Assets",
+        Directory = "lds13",
+        Configs = "lds13/Configs",
+        Assets = "lds13/Assets",
     }
     
     for Index, Value in Folders do 
