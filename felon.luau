@@ -4509,6 +4509,87 @@ local Library do
             return Label
         end
 
+        Library.Sections.Separator = function(self, Data)
+            Data = type(Data) == "table" and Data or { Name = Data }
+
+            local Separator = {
+                Window = self.Window,
+                Page = self.Page,
+                Section = self,
+
+                Name = Data.Name or Data.name or ""
+            }
+
+            local Items = { } do 
+                Items["Separator"] = Instances:Create("Frame", {
+                    Parent = Separator.Section.Items["Content"].Instance,
+                    Name = "\0",
+                    BackgroundTransparency = 1,
+                    BorderColor3 = FromRGB(0, 0, 0),
+                    Size = UDim2New(1, 0, 0, Separator.Name ~= "" and 14 or 6),
+                    BorderSizePixel = 0,
+                    BackgroundColor3 = FromRGB(255, 255, 255)
+                })
+
+                Items["Line"] = Instances:Create("Frame", {
+                    Parent = Items["Separator"].Instance,
+                    Name = "\0",
+                    AnchorPoint = Vector2New(0, 0.5),
+                    Position = UDim2New(0, 0, 0.5, 0),
+                    Size = UDim2New(1, 0, 0, 1),
+                    BorderColor3 = FromRGB(0, 0, 0),
+                    BorderSizePixel = 0,
+                    BackgroundColor3 = FromRGB(26, 30, 36)
+                })  Items["Line"]:AddToTheme({BackgroundColor3 = "Outline"})
+
+                if Separator.Name ~= "" then 
+                    Items["Text"] = Instances:Create("TextLabel", {
+                        Parent = Items["Separator"].Instance,
+                        Name = "\0",
+                        FontFace = Library.Font,
+                        TextColor3 = FromRGB(100, 100, 100),
+                        BorderColor3 = FromRGB(0, 0, 0),
+                        Text = Separator.Name,
+                        AnchorPoint = Vector2New(0.5, 0.5),
+                        Position = UDim2New(0.5, 0, 0.5, 0),
+                        Size = UDim2New(0, 0, 0, 14),
+                        AutomaticSize = Enum.AutomaticSize.X,
+                        BorderSizePixel = 0,
+                        TextSize = 14,
+                        BackgroundColor3 = FromRGB(22, 25, 30)
+                    })  Items["Text"]:AddToTheme({TextColor3 = "Dark Text", BackgroundColor3 = "Inline"})
+
+                    Instances:Create("UIPadding", {
+                        Parent = Items["Text"].Instance,
+                        Name = "\0",
+                        PaddingRight = UDimNew(0, 6),
+                        PaddingLeft = UDimNew(0, 6)
+                    })
+                end
+            end
+
+            function Separator:SetText(Text)
+                if Items["Text"] then 
+                    Items["Text"].Instance.Text = tostring(Text)
+                end
+            end
+
+            function Separator:SetVisibility(Bool)
+                Items["Separator"].Instance.Visible = Bool
+            end
+
+            local PageSearchData = Library.SearchItems[Separator.Page]
+
+            if PageSearchData and Separator.Name ~= "" then
+                TableInsert(PageSearchData, {
+                    Element = Items["Separator"],
+                    Name = Separator.Name,
+                })
+            end
+
+            return Separator
+        end
+
         Library.Sections.Textbox = function(self, Data)
             Data = Data or { }
 
@@ -4720,7 +4801,7 @@ local Library do
         end
         
         local SettingsSection = SettingsPage:Section({Name = "Settings", Side = 1}) do 
-            SettingsSection:Label("Menu Keybind"):Keybind({Name = "Menu Keybind", Flag = "Menu Keybind", Default = Enum.KeyCode.RightShift, Mode = "Toggle", Callback = function(Value)
+            SettingsSection:Label("Menu Keybind"):Keybind({Name = "Menu Keybind", Flag = "Menu Keybind", Default = Enum.KeyCode.RightControl, Mode = "Toggle", Callback = function(Value)
                 Library.MenuKeybind = Library.Flags["Menu Keybind"].Key
             end})
 
